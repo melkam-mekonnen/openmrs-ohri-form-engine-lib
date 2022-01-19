@@ -1,5 +1,6 @@
 import { FormJsonFile, getForm, getFormByVersion, getLatestFormVersion, applyFormIntent } from './forms-loader';
 import formsRegistry from '../../__mocks__/packages/test-forms-registry';
+
 import {
   testSchemaV2,
   htsRetrospectiveResultingSchemaV2,
@@ -50,7 +51,7 @@ describe('Forms loader - getForm', () => {
   it('should get latest form if no version was specified', () => {
     // replay
     const latestHTSForm = getForm('hiv', 'hts_poc', null, false, formsRegistry);
-    // verify
+    // verifyimport forms
     expect(latestHTSForm).toEqual({
       name: 'Test HTS POC',
       pages: [
@@ -143,7 +144,7 @@ describe('Forms loader - getForm', () => {
   it('should get form with specified version', () => {
     // replay
     const htsFormV1_0 = getForm('hiv', 'hts_poc', '1.0', false, formsRegistry);
-    // verify
+    // verifyimport forms
     expect(htsFormV1_0).toEqual({
       name: 'Test HTS POC',
       pages: [],
@@ -158,7 +159,7 @@ describe('Forms loader - getForm', () => {
     // replay
     try {
       getForm('hiv', 'hts_poc', '9.1', true, formsRegistry);
-      // fail test if this point is hit
+      // fail test if this point is hitimport forms
       fail('An error was expected to be called');
     } catch (error) {
       // verify
@@ -169,7 +170,7 @@ describe('Forms loader - getForm', () => {
   it('should get lastet if required version was not found while in none strict mode', () => {
     // replay
     const latestForm = getForm('hiv', 'hts_poc', '9.1', false, formsRegistry);
-    // verify
+    // verifyimport forms
     expect(latestForm).toEqual({
       name: 'Test HTS POC',
       pages: [
